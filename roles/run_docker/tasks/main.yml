@@ -1,0 +1,6 @@
+- name: run docker container
+  community.docker.docker_container:
+          name: '{{container_name}}'
+          image: myweb
+          published_ports:
+                  - '{{var_port}}:80'

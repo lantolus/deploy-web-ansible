@@ -1,0 +1,4 @@
+- name: create user deploy
+  ansible.builtin.user:
+          name: deploy
+          

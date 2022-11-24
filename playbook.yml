@@ -1,0 +1,20 @@
+---
+- hosts: localhost
+  become: true
+  roles:
+          - create_user
+
+- hosts: localhost
+  become: true
+  roles:
+          - install_docker
+
+- hosts: localhost
+  become: true
+  roles:
+          - build_docker
+
+- hosts: localhost
+  become: true
+  roles:
+          - run_docker

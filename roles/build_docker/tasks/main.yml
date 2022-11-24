@@ -1,0 +1,28 @@
+- name: create build directory
+  file:
+         path: /home/client/Task1/build
+         state: directory
+         owner: deploy
+         mode: '0775'
+
+- name: copy Dockerfile
+  copy:
+          src: /home/client/Task1/roles/build_docker/files/Dockerfile
+          dest: /home/client/Task1/build/Dockerfile
+          owner: deploy
+          mode: '0777'
+
+- name: copy data
+  copy:
+          src: /home/client/Task1/roles/build_docker/files/index.html
+          dest: /home/client/Task1/build/index.html
+          owner: deploy
+          mode: '0644'
+
+- name: build docker image
+  docker_image:
+          name: '{{image_name}}'
+          source: build
+          build:
+                 path: /home/client/Task1/build
+          state: present 
